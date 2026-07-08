@@ -1,0 +1,175 @@
+<!--
+  GUIA RÁPIDO (apaga quando quiseres)
+  - Onde vês EDITA, troca pelo teu texto.
+  - Imagens/PDFs/vídeos vão para a pasta "assets"; os links apontam para lá.
+  - Cada projeto é um bloco <article class="entry"> — copia para criar mais.
+  - O TEMA (cores e fontes) está no bloco :root, no topo do <style>.
+-->
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDITA: O teu nome — Portfólio</title>
+<meta name="description" content="EDITA: uma frase curta sobre ti.">
+<meta name="robots" content="noindex, nofollow">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1E9EC;
+    --ink:#26202A;
+    --muted:#6C6070;
+    --accent:#8E2F4E;
+    --accent-soft:#E7CDD6;
+    --card:#FFFFFF;
+    --line:rgba(90,40,60,.18);
+    --display:"Hanken Grotesk",system-ui,sans-serif;
+    --sans:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
+    background:linear-gradient(180deg,#E4CBD5,var(--paper) 460px) no-repeat,var(--paper)}
+
+  .layout{display:grid;grid-template-columns:minmax(0,330px) minmax(0,1fr);gap:72px;max-width:1180px;margin:0 auto;padding:0 34px}
+
+  .side{position:sticky;top:0;align-self:start;padding:60px 0 40px}
+  .kicker{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+  .side h1{font-family:var(--display);font-weight:700;font-size:clamp(38px,4.6vw,52px);line-height:1;letter-spacing:-.02em;margin:0 0 16px}
+  .role{font-family:var(--display);font-weight:500;font-size:19px;color:var(--ink);margin:0 0 18px}
+  .intro{color:var(--muted);font-size:15px;line-height:1.7;margin:0 0 26px;max-width:34ch}
+  .contacts{display:flex;flex-direction:column;gap:9px;margin:0 0 30px}
+  .contacts a{font-size:14px;color:var(--ink);width:fit-content;border-bottom:1px solid var(--line);padding-bottom:2px}
+  .contacts a:hover{color:var(--accent);border-color:var(--accent)}
+  .side nav{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:16px}
+  .side nav a{font-size:13.5px;color:var(--muted);padding:4px 0;transition:color .2s,padding .2s}
+  .side nav a:hover{color:var(--accent);padding-left:6px}
+
+  .main{padding:60px 0 40px;min-width:0}
+  section.block{margin-bottom:56px;scroll-margin-top:24px}
+  .chip{display:inline-block;font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 11px;border-radius:4px;margin:0 0 14px}
+  section.block > h2{font-family:var(--display);font-weight:600;font-size:clamp(23px,3vw,29px);letter-spacing:-.01em;margin:0 0 6px}
+  section.block > .note{color:var(--muted);margin:0 0 22px;font-size:15px;max-width:56ch}
+
+  .entry{position:relative;padding:24px 0 24px 22px;border-top:1px solid var(--line)}
+  .entry::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:3px;background:var(--accent);border-radius:3px;opacity:0;transition:opacity .25s}
+  .entry:hover::before{opacity:1}
+  .e-title{font-family:var(--display);font-weight:600;font-size:20px;line-height:1.2;margin:0 0 7px}
+  .e-title a{color:var(--ink);transition:color .2s}
+  .entry:hover .e-title a{color:var(--accent)}
+  .e-desc{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 12px;max-width:60ch}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+  .tag{font-size:12px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:2px 11px}
+  .e-links{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13.5px;font-weight:500}
+  .e-links a.muted{color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);margin-top:20px;padding:34px 0 60px;color:var(--muted);font-size:13px}
+
+  @media(max-width:860px){
+    .layout{grid-template-columns:1fr;gap:20px}
+    .side{position:static;padding:56px 0 10px}
+    .side nav{display:none}
+  }
+
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="side">
+    <p class="kicker">EDITA: curso · universidade</p>
+    <h1>EDITA:<br>O teu nome</h1>
+    <p class="role">EDITA: o que és / o que procuras</p>
+    <p class="intro">EDITA: uma ou duas frases sobre ti — o que te interessa e o que procuras (ex.: candidatura a mestrado).</p>
+    <div class="contacts">
+      <a href="mailto:EDITA@email.com">EDITA@email.com</a>
+      <a href="mailto:EDITA@alunos.universidade.pt">EDITA@alunos.universidade.pt</a>
+    </div>
+    <nav aria-label="Índice">
+      <a href="#destaque">Projetos em destaque</a>
+      <a href="#a1">EDITA: área 1</a>
+      <a href="#a2">EDITA: área 2</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <!-- DESTAQUE -->
+    <section class="block" id="destaque">
+      <span class="chip">destaque</span>
+      <h2>Projetos em destaque</h2>
+      <p class="note">Os trabalhos de que mais te orgulhas, do início ao fim.</p>
+
+      <!-- Duplica este bloco <article> para cada projeto -->
+      <article class="entry reveal">
+        <h3 class="e-title"><a href="assets/relatorio.pdf">EDITA: nome do projeto</a></h3>
+        <p class="e-desc">EDITA: o que era, o que fizeste e o resultado, em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA: área</span><span class="tag">EDITA: tecnologia</span></div>
+        <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+      </article>
+
+      <article class="entry reveal">
+        <h3 class="e-title"><a href="assets/relatorio.pdf">EDITA: nome do projeto</a></h3>
+        <p class="e-desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA: área</span></div>
+        <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+      </article>
+    </section>
+
+    <!-- ÁREA 1 -->
+    <section class="block" id="a1">
+      <span class="chip">EDITA: área</span>
+      <h2>EDITA: título da área</h2>
+      <p class="note">EDITA: uma frase de enquadramento.</p>
+
+      <article class="entry reveal">
+        <h3 class="e-title"><a href="assets/relatorio.pdf">EDITA: nome do projeto</a></h3>
+        <p class="e-desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA</span></div>
+        <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+      </article>
+
+      <article class="entry reveal">
+        <h3 class="e-title"><a href="#">EDITA: nome do projeto</a></h3>
+        <p class="e-desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA</span></div>
+        <div class="e-links"><a class="muted" href="#">disponível a pedido</a></div>
+      </article>
+    </section>
+
+    <!-- ÁREA 2  (copia esta secção inteira para mais áreas) -->
+    <section class="block" id="a2">
+      <span class="chip">EDITA: área</span>
+      <h2>EDITA: título da área</h2>
+      <p class="note">EDITA: uma frase de enquadramento.</p>
+
+      <article class="entry reveal">
+        <h3 class="e-title"><a href="assets/relatorio.pdf">EDITA: nome do projeto</a></h3>
+        <p class="e-desc">EDITA: descrição em 1–2 frases.</p>
+        <div class="tags"><span class="tag">EDITA</span></div>
+        <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+      </article>
+    </section>
+
+    <footer>EDITA: O teu nome · 2026 · construído com GitHub Pages</footer>
+
+  </main>
+</div>
+
+<script>
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
