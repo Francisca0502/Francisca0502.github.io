@@ -1,0 +1,300 @@
+<!--
+  GUIA RÁPIDO
+  - Onde vês EDITA, troca pelo teu texto.
+  - Imagens/PDFs/vídeos vão para a pasta "assets"; os links apontam para lá.
+  - Cada projeto é um bloco <article class="entry"> — copia para criar mais.
+  - PARA PÔR UMA IMAGEM num projeto, troca a linha:
+        <div class="shot">adicionar imagem</div>
+    por:
+        <div class="shot"><img src="assets/nome-da-imagem.jpg" alt="descrição"></div>
+    Para um vídeo:
+        <div class="shot"><video controls muted playsinline src="assets/video.mp4"></video></div>
+  - O TEMA (cores e fontes) está no bloco :root, no topo do <style>.
+-->
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Francisca Domingues — Portefólio</title>
+<meta name="description" content="Portefólio de projetos académicos — Engenharia Eletrónica Industrial e Computadores, Universidade do Minho.">
+<meta name="robots" content="noindex, nofollow">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1E9EC;
+    --ink:#26202A;
+    --muted:#6C6070;
+    --accent:#8E2F4E;
+    --accent-soft:#E7CDD6;
+    --card:#FFFFFF;
+    --line:rgba(90,40,60,.18);
+    --display:"Hanken Grotesk",system-ui,sans-serif;
+    --sans:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
+    background:linear-gradient(180deg,#E4CBD5,var(--paper) 460px) no-repeat,var(--paper)}
+
+  .layout{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:64px;max-width:1200px;margin:0 auto;padding:0 34px}
+
+  /* ---------- Coluna lateral ---------- */
+  .side{position:sticky;top:0;align-self:start;padding:60px 0 40px}
+  .kicker{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+  .side h1{font-family:var(--display);font-weight:700;font-size:clamp(38px,4.6vw,52px);line-height:1;letter-spacing:-.02em;margin:0 0 16px}
+  .role{font-family:var(--display);font-weight:500;font-size:19px;margin:0 0 18px}
+  .intro{color:var(--muted);font-size:15px;line-height:1.7;margin:0 0 26px;max-width:34ch}
+  .contacts{display:flex;flex-direction:column;gap:9px;margin:0 0 30px}
+  .contacts a{font-size:14px;color:var(--ink);width:fit-content;border-bottom:1px solid var(--line);padding-bottom:2px;text-decoration:none}
+  .contacts a:hover{color:var(--accent);border-color:var(--accent)}
+  .side nav{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:16px}
+  .side nav a{font-size:13.5px;color:var(--muted);padding:5px 0;text-decoration:none;transition:color .2s,padding-left .2s}
+  .side nav a:hover{color:var(--accent);padding-left:6px}
+
+  /* ---------- Conteúdo ---------- */
+  .main{padding:60px 0 40px;min-width:0}
+  section.block{margin-bottom:64px;scroll-margin-top:24px}
+  .chip{display:inline-block;font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:4px 11px;border-radius:4px;margin:0 0 14px}
+  section.block > h2{font-family:var(--display);font-weight:600;font-size:clamp(23px,3vw,29px);letter-spacing:-.01em;margin:0 0 6px}
+  section.block > .note{color:var(--muted);margin:0 0 30px;font-size:15px;max-width:56ch}
+
+  /* ---------- Entrada de projeto: mais espaçosa, com imagem ---------- */
+  .entry{
+    position:relative;
+    display:grid;
+    grid-template-columns:260px minmax(0,1fr);
+    gap:30px;
+    align-items:start;
+    padding:34px 0 34px 22px;
+    border-top:1px solid var(--line);
+  }
+  .entry::before{
+    content:"";position:absolute;left:0;top:34px;bottom:34px;width:3px;
+    background:var(--accent);border-radius:3px;opacity:0;transition:opacity .25s;
+  }
+  .entry:hover::before{opacity:1}
+
+  .shot{
+    aspect-ratio:4/3;border-radius:10px;overflow:hidden;
+    background:var(--card);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--muted);font-size:12.5px;padding:12px;
+  }
+  .shot img,.shot video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
+  .entry:hover .shot img{transform:scale(1.04)}
+
+  .e-body{min-width:0}
+  .e-title{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.2;margin:0 0 10px;color:var(--accent);letter-spacing:-.02em}
+  .e-desc{color:var(--muted);font-size:15px;line-height:1.7;margin:0 0 16px;max-width:62ch}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px}
+  .tag{font-size:12px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:3px 12px}
+  .e-links{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;font-weight:500}
+  .e-links a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+  .e-links a:hover{border-color:var(--accent)}
+  .e-links a.muted{color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);margin-top:20px;padding:34px 0 60px;color:var(--muted);font-size:13px}
+
+  @media(max-width:980px){
+    .entry{grid-template-columns:200px minmax(0,1fr);gap:22px}
+  }
+  @media(max-width:860px){
+    .layout{grid-template-columns:1fr;gap:20px}
+    .side{position:static;padding:56px 0 10px}
+    .side nav{display:none}
+    .entry{grid-template-columns:1fr;gap:18px}
+    .shot{aspect-ratio:16/9}
+  }
+
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="side">
+    <p class="kicker">Universidade do Minho</p>
+    <h1>Francisca<br>Domingues</h1>
+    <p class="role">Engenharia Eletrónica Industrial e Computadores</p>
+    <p class="intro">Portefólio completo de projetos académicos desenvolvidos ao longo da minha licenciatura.</p>
+    <div class="contacts">
+      <a href="mailto:a104953@alunos.uminho.pt">a104953@alunos.uminho.pt</a>
+    </div>
+    <nav aria-label="Índice">
+      <a href="#destaque">Projetos em destaque</a>
+      <a href="#ano1">Projetos do 1.º ano</a>
+      <a href="#ano2">Projetos do 2.º ano</a>
+      <a href="#ano3">Projetos do 3.º ano</a>
+      <a href="#competencias">Competências</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+
+    <!-- ============ DESTAQUE ============ -->
+    <section class="block" id="destaque">
+      <span class="chip">destaque</span>
+      <h2>Projetos em destaque</h2>
+      <p class="note">Os projetos maiores do curso, levados do conceito ao protótipo funcional.</p>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">AGROBOT</h3>
+          <p class="e-desc">O trabalho desenvolvido permitiu-nos criar o protótipo de um robot direcionado para aplicações na área da agricultura.</p>
+          <div class="tags"><span class="tag">3.º ano</span><span class="tag">Projeto Integrador I e II</span><span class="tag">C++</span><span class="tag">STM32</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Maximum Power Point Tracking</h3>
+          <p class="e-desc">O objetivo do projeto é desenvolver um conversor CC–CC do tipo Boost, de modo a atuar como MPPT de um painel solar.</p>
+          <div class="tags"><span class="tag">3.º ano</span><span class="tag">Energias Renováveis</span><span class="tag">PSIM</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 1.º ANO ============ -->
+    <section class="block" id="ano1">
+      <span class="chip">1.º ano</span>
+      <h2>Projetos do 1.º ano</h2>
+      <p class="note">Primeiros projetos de programação e eletrónica.</p>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Jogo retro R-Type</h3>
+          <p class="e-desc">O objetivo fundamental do jogo consiste em pilotar uma nave de combate através de várias fases de progressão lateral, eliminando as forças inimigas até destruir o núcleo da base final. O progresso é linear e exige a superação de cenários com níveis de dificuldade crescentes.</p>
+          <div class="tags"><span class="tag">1.º ano</span><span class="tag">CPC</span><span class="tag">C</span><span class="tag">Visual Studio</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 2.º ANO ============ -->
+    <section class="block" id="ano2">
+      <span class="chip">2.º ano</span>
+      <h2>Projetos do 2.º ano</h2>
+      <p class="note">Programação, eletrónica de potência, redes e eletrotecnia.</p>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Jogo Breakout</h3>
+          <p class="e-desc">O objetivo principal do jogo Breakout é limpar completamente o ecrã, destruindo todas as linhas de tijolos sem deixar a bola cair uma única vez.</p>
+          <div class="tags"><span class="tag">2.º ano</span><span class="tag">ATC I</span><span class="tag">C++</span><span class="tag">Visual Studio</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Conversor CC-CC Step-Up</h3>
+          <p class="e-desc">EDITA: descrição do conversor Step-Up (o texto atual está repetido do AGROBOT).</p>
+          <div class="tags"><span class="tag">2.º ano</span><span class="tag">PL3</span><span class="tag">PSIM</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Motor Elétrico</h3>
+          <p class="e-desc">EDITA: descrição do motor elétrico (o texto atual está repetido do AGROBOT).</p>
+          <div class="tags"><span class="tag">2.º ano</span><span class="tag">Eletrotecnia e Instalações Elétricas</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">LAN local</h3>
+          <p class="e-desc">Neste trabalho prático, foi implementada uma LAN local e a sua interligação, com o auxílio do emulador de redes CORE (Common Open Research Emulator). Com a interface gráfica do CORE, foi possível esquematizar as topologias de rede e configurar as ligações e os endereços. Foram ainda utilizados o ping e o Wireshark, recorrendo a protocolos como ARP, ICMP, DHCP, IP/TCP e HTTP.</p>
+          <div class="tags"><span class="tag">2.º ano</span><span class="tag">Redes de Computadores</span><span class="tag">CORE</span><span class="tag">Wireshark</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Cidadania para a Paz</h3>
+          <p class="e-desc">O trabalho foi realizado com o intuito de consciencializar a comunidade sobre alguns problemas gerais, aprofundando o tema da educação para a paz.</p>
+          <div class="tags"><span class="tag">2.º ano</span><span class="tag">Educação e Cidadania Global Criativa</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 3.º ANO ============ -->
+    <section class="block" id="ano3">
+      <span class="chip">3.º ano</span>
+      <h2>Projetos do 3.º ano</h2>
+      <p class="note">Sistemas embebidos, máquinas elétricas e energia.</p>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Vending Machine</h3>
+          <p class="e-desc">Este projeto teve como objetivo a simulação de uma máquina de venda automática, com foco no desenvolvimento da lógica de funcionamento e no controlo sequencial das operações associadas ao processo de venda. O trabalho não contemplou a construção física do sistema, incidindo exclusivamente na sua modelação em ambiente de simulação.</p>
+          <div class="tags"><span class="tag">3.º ano</span><span class="tag">Sistemas Embebidos</span><span class="tag">C++</span><span class="tag">STM32</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a><a class="muted" href="#">código privado</a></div>
+        </div>
+      </article>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Aulas laboratoriais — Máquinas Elétricas</h3>
+          <p class="e-desc">Relatório dos ensaios realizados em laboratório: transformadores (ensaios em vazio, curto-circuito e polaridade), máquina de corrente contínua, motor síncrono trifásico, motor de indução e arranque estrela-triângulo. Inclui montagens, medições e análise dos resultados. Trabalho em par.</p>
+          <div class="tags"><span class="tag">3.º ano</span><span class="tag">Máquinas Elétricas</span><span class="tag">ensaios laboratoriais</span></div>
+          <div class="e-links"><a href="assets/relatorio.pdf">relatório ↗</a></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ COMPETÊNCIAS ============ -->
+    <section class="block" id="competencias">
+      <span class="chip">competências</span>
+      <h2>Competências adquiridas</h2>
+      <p class="note">Trabalho prático continuado ao longo do curso.</p>
+
+      <article class="entry reveal">
+        <div class="shot">adicionar imagem</div>
+        <div class="e-body">
+          <h3 class="e-title">Guias práticos — ATC I, ATC II e Microcontroladores</h3>
+          <p class="e-desc">Ao longo das unidades curriculares de ATC I, ATC II e Microcontroladores, foram realizados guias práticos mensais, desenvolvidos em C e C++, que abordaram conceitos como programação orientada a objetos, comunicação série, interrupções, PWM, interfaces homem-máquina (HMI), gestão de memória e interação com periféricos, permitindo consolidar competências na programação de sistemas embebidos e no desenvolvimento de software.</p>
+          <div class="tags"><span class="tag">ATC I, ATC II, Microcontroladores</span><span class="tag">C</span><span class="tag">C++</span><span class="tag">Assembly</span><span class="tag">8051</span><span class="tag">Keil µVision</span></div>
+          <div class="e-links"><a class="muted" href="#">código privado</a></div>
+        </div>
+      </article>
+    </section>
+
+    <footer>Francisca Domingues · 2026 · Construído com GitHub Pages</footer>
+
+  </main>
+</div>
+
+<script>
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
